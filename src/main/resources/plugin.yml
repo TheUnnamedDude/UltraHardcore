@@ -1,0 +1,8 @@
+name: UltraHardcore
+main: me.kevin.uhc.UltraHardcore
+version: 0.1-SNAPSHOT
+commands:
+   scatter:
+      description: Distrebutes all players in teams around the map within the radius in the command or config.
+   team:
+      description: A command for adding, deleting and listing teams, /team add <teamname> <playername>, /team remove <teamname> <playername> or /team list.
