@@ -26,6 +26,7 @@ public class UltraHardcore extends JavaPlugin {
     public Team spectator;
     public Objective score;
     public Objective health;
+    public Objective headHealth;
 
     public BorderCheckerTask borderCheckerTask = new BorderCheckerTask(this);
     public HealthUpdaterTask healthUpdaterTask = new HealthUpdaterTask(this);
@@ -38,9 +39,12 @@ public class UltraHardcore extends JavaPlugin {
         scoreboard = getServer().getScoreboardManager().getNewScoreboard();
         score = scoreboard.registerNewObjective("Score", "dummy");
         health = scoreboard.registerNewObjective("Health", "dummy");
+        headHealth = scoreboard.registerNewObjective("Headhealth", "dummy");
 
         score.setDisplaySlot(DisplaySlot.SIDEBAR);
         health.setDisplaySlot(DisplaySlot.PLAYER_LIST);
+        headHealth.setDisplaySlot(DisplaySlot.BELOW_NAME);
+        headHealth.setDisplayName("/ 20");
 
         for (World world : getServer().getWorlds()) {
             world.setGameRuleValue("naturalRegeneration", "false");
@@ -77,7 +81,8 @@ public class UltraHardcore extends JavaPlugin {
 
     public void updateHealth(Player player) {
         health.getScore(player).setScore((int)player.getHealth());
-        player.setDisplayName(getChatColor((int) player.getHealth()) + player.getName());
+        headHealth.getScore(player).setScore((int)player.getHealth());
+        player.setPlayerListName(getChatColor((int)player.getHealth()) + player.getName());
     }
 
     public ChatColor getChatColor(int health) {

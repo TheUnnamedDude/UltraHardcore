@@ -67,7 +67,7 @@ public class ScatterCommand implements CommandExecutor {
                             pl.setSaturation(10);
                             pl.setGameMode(GameMode.SURVIVAL);
                             pl.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 30 * 20, 10));
-                            main.health.getScore(pl).setScore((int)pl.getHealth());
+                            main.updateHealth(pl);
                         } else {
                             team.removePlayer(offlinePlayer);
                         }
