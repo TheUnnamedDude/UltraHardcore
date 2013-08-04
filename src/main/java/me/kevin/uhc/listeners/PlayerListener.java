@@ -51,11 +51,13 @@ public class PlayerListener implements Listener {
                     score.setScore(score.getScore() + 1);
                 }
             }
-            ItemStack head = new ItemStack(Material.SKULL_ITEM, 1, (short)3);
-            SkullMeta meta = (SkullMeta)head.getItemMeta();
-            meta.setOwner(event.getEntity().getName());
-            head.setItemMeta(meta);
-            event.getDrops().add(head);
+            if (oPlayer != null) {
+                ItemStack head = new ItemStack(Material.SKULL_ITEM, 1, (short)3);
+                SkullMeta meta = (SkullMeta)head.getItemMeta();
+                meta.setOwner(event.getEntity().getName());
+                head.setItemMeta(meta);
+                event.getDrops().add(head);
+            }
             main.setSpectator(event.getEntity());
         }
     }

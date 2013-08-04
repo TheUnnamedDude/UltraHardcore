@@ -80,9 +80,11 @@ public class UltraHardcore extends JavaPlugin {
     }
 
     public void updateHealth(Player player) {
-        health.getScore(player).setScore((int)player.getHealth());
+        String displayName = getChatColor((int)player.getHealth()) + player.getName();
+        displayName = displayName.substring(0, Math.min(16, displayName.length()));
+        player.setPlayerListName(displayName);
+        health.getScore(getServer().getOfflinePlayer(displayName)).setScore((int)player.getHealth());
         headHealth.getScore(player).setScore((int)player.getHealth());
-        player.setPlayerListName(getChatColor((int)player.getHealth()) + player.getName());
     }
 
     public ChatColor getChatColor(int health) {
