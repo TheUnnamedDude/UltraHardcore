@@ -17,6 +17,24 @@ import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
 public class UltraHardcore extends JavaPlugin {
+
+    public String[] dolphin = {
+            "                                   __",
+            "                               _.-~  )",
+            "                    _..--~~~~,'   ,-/     _",
+            "                 .-'. . . .'   ,-','    ,' )",
+            "               ,'. . . _   ,--~,-'__..-'  ,'",
+            "             ,'. . .  (@)' ---~~~~      ,'",
+            "            /. . . . '~~             ,-'",
+            "           /. . . . .             ,-'",
+            "          ; . . . .  - .        ,'",
+            "         : . . . .       _     /",
+            "        . . . . .          `-.:",
+            "       . . . ./  - .          )",
+            "      .  . . |  _____..---.._/ _____",
+            "~---~~~~----~~~~             ~~"
+    };
+
     public boolean ingame = false;
     public int radius = 500;
 
@@ -36,6 +54,11 @@ public class UltraHardcore extends JavaPlugin {
 
     @Override
     public void onEnable() {
+
+        for (String str : dolphin) {
+            getLogger().info(str);
+        }
+
         scoreboard = getServer().getScoreboardManager().getNewScoreboard();
         score = scoreboard.registerNewObjective("Score", "dummy");
         health = scoreboard.registerNewObjective("Health", "dummy");
