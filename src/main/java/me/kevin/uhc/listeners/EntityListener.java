@@ -20,7 +20,7 @@ public class EntityListener implements Listener {
     public void onEntityTarget(EntityTargetEvent event) {
         if (event.getTarget() instanceof Player) {
             Player player = (Player)event.getTarget();
-            if (!main.ingame || main.getTeamByPlayer(player) == null) {
+            if (!main.isIngame() || main.getTeamByPlayer(player) == null) {
                 event.setCancelled(true);
             }
         }
@@ -28,7 +28,7 @@ public class EntityListener implements Listener {
 
     @EventHandler
     public void onEntityDamageByEntityEvent(EntityDamageByEntityEvent event) {
-        if (main.ingame) {
+        if (main.isIngame()) {
             if (event.getEntity() instanceof Player) {
                 main.updateHealth((Player)event.getEntity());
             }
@@ -48,7 +48,7 @@ public class EntityListener implements Listener {
 
     @EventHandler
     public void onEntityDamage(EntityDamageEvent event) {
-        if (main.ingame) {
+        if (main.isIngame()) {
             if (event.getEntity() instanceof Player) {
                 Player player = (Player)event.getEntity();
                 if (main.getTeamByPlayer(player) == null) {

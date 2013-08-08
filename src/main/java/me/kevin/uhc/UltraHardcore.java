@@ -36,6 +36,7 @@ public class UltraHardcore extends JavaPlugin {
     };
 
     public boolean ingame = false;
+    public boolean scattered = false;
     public int radius = 500;
 
     public PlayerListener listener = new PlayerListener(this);
@@ -120,6 +121,10 @@ public class UltraHardcore extends JavaPlugin {
         } else {
             return ChatColor.GREEN;
         }
+    }
+
+    public boolean isIngame() {
+        return ingame && scattered;
     }
 
 }

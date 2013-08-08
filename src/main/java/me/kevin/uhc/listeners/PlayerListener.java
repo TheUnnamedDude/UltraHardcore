@@ -25,7 +25,7 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         event.getPlayer().setScoreboard(main.scoreboard);
-        if (main.ingame) {
+        if (main.isIngame()) {
             if (main.getTeamByPlayer(event.getPlayer()) == null) {
                 for (Player player : main.getServer().getOnlinePlayers()) {
                     if (player != event.getPlayer()) {
@@ -38,7 +38,7 @@ public class PlayerListener implements Listener {
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
-        if (main.ingame) {
+        if (main.isIngame()) {
             Team team = main.getTeamByPlayer(event.getEntity());
             if (team != null) {
                 team.removePlayer(event.getEntity());
@@ -64,7 +64,7 @@ public class PlayerListener implements Listener {
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
-        if (main.ingame) {
+        if (main.isIngame()) {
             if (main.getTeamByPlayer(event.getPlayer()) == null) {
                 event.setCancelled(true);
             }
@@ -89,7 +89,7 @@ public class PlayerListener implements Listener {
 
     @EventHandler
     public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
-        if (main.ingame) {
+        if (main.isIngame()) {
             if (main.getTeamByPlayer(event.getPlayer()) == null) {
                 event.setCancelled(true);
             }
